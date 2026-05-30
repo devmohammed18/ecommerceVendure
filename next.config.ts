@@ -20,13 +20,13 @@ images: {
       },
 
        { protocol: 'https',
-        hostname: 'images.unsplash.com'}
+        hostname: 'images.unsplash.com'},
       // Ajoutez votre domaine de production ici
-      // {
-      //   protocol: 'https',
-      //   hostname: 'votre-domaine.com',
-      //   pathname: '/assets/**',
-      // },
+      {
+        protocol: 'https',
+        hostname: 'backendvendureecommerce.onrender.com',
+        pathname: '/assets/**',
+      },
     ],
     
     // Alternative plus permissive pour le développement (à éviter en production)
