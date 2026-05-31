@@ -9,8 +9,7 @@ import { ApolloProvider } from '@apollo/client'
 // connexion à Vendure Shop API
 const httpLink =createHttpLink({
   // Vendure 2025 utilise typiquement le port 3000 avec /shop-api
-  uri: process.env.NEXT_PUBLIC_VENDURE_GRAPHQL_URL ,
-  // || 'https://backendvendureecommerce.onrender.com/shop-api' ,
+  uri: process.env.NEXT_PUBLIC_VENDURE_GRAPHQL_URL || 'https://backendvendureecommerce.onrender.com/shop-api' ,
   credentials: 'include', // ✅ Important pour les cookies de session
   // Headers requis pour Vendure
   headers: {
