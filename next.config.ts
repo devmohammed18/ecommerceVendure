@@ -29,6 +29,10 @@ images: {
         hostname: 'backendvendureecommerce.onrender.com',
         pathname: '/assets/**',
       },
+       {
+         protocol: 'https',
+         hostname: 'res.cloudinary.com', // ✅ ajoute ceci
+        }
     ],
     
     // Alternative plus permissive pour le développement (à éviter en production)

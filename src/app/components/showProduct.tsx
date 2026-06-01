@@ -13,13 +13,7 @@ export default async function ShowProduct() {
 
   const products = data?.products.items ?? [];
   console.log("product>>>>>>>>>>>>>>>>>>>>>>>>>>>>..",products)
-   const getImageUrl = (preview: string): string => {
-    if (!preview) return '';
-    if (preview.startsWith('http')) return preview;
-    const cleanPath = preview.replace(/\\/g, '/');
-    return `https://backendvendureecommerce.onrender.com/${cleanPath}`;
-  }
-
+   
   const variants=products.map((product=>(product.variants.map(variant=>variant.price))))
   console.log("variants........................",variants)
   console.log("min price:",Math.min(...variants[0]))
@@ -41,7 +35,7 @@ export default async function ShowProduct() {
                   {product.featuredAsset?.preview ? (
                     <Link className="hover:cursor-pointer" href={`/productDetails/${product.id}` }>
                            <Image
-                      src={getImageUrl(product.featuredAsset.preview)}
+                      src={product.featuredAsset.preview}
                       alt={product.name}
                       fill
                       className="object-contain rounded"
