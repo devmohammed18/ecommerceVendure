@@ -64,9 +64,9 @@ CreateCustomerForOrder($input1:CreateCustomerInput!)
 }`
 
 export const ADD_ITEM_ORDER=gql`mutation  
- addItemOrder($productVariableId:ID!,$quantity:Int!)
+ addItemOrder($productVariantId:ID!,$quantity:Int!)
 {
-     addItemToOrder(productVariantId:$productVariableId,quantity:$quantity)
+     addItemToOrder(productVariantId:$productVariantId,quantity:$quantity)
       
       {
         ...on Order{
@@ -96,6 +96,9 @@ export const ADD_ITEM_ORDER=gql`mutation
       }
 }`
 
+
+
+
 export const SET_SHIPPING_METHOD =gql`mutation SetShippingMethod($id:ID!) {
   setOrderShippingMethod(shippingMethodId: [$id]) {
     ... on Order {
@@ -119,3 +122,66 @@ export const SET_SHIPPING_METHOD =gql`mutation SetShippingMethod($id:ID!) {
     }
   }
 }`
+
+
+
+
+export const SET_BILLING_ADDRESS =gql `
+  mutation SetBillingAddress($input: CreateAddressInput!) {
+    setOrderBillingAddress(input: $input) {
+      id
+      billingAddress {
+        streetLine1
+        city
+        postalCode
+        countryCode
+      }
+    }
+  }
+`;
+
+export const TRANSITION_ORDER = gql`
+  mutation TransitionOrder($state: String!) {
+    transitionOrderToState(state: $state) {
+      ... on Order {
+        id
+        code
+        state
+        totalWithTax
+      }
+      ... on OrderStateTransitionError {
+        errorCode
+        message
+        transitionError
+      }
+    }
+  }`
+
+
+export const ADD_PAYMENT_TO_ORDER = gql`
+  mutation AddPaymentToOrder($input: PaymentInput!) {
+    addPaymentToOrder(input: $input) {
+      ... on Order {
+        id
+        code
+        state
+        totalWithTax
+      }
+      ... on ErrorResult {
+        errorCode
+        message
+      }
+    }
+  }
+`
+
+
+export const TRANSITION_TO_STATE =gql `
+  mutation TransitionOrderToState($state: String!) {
+    transitionOrderToState(state: $state) {
+      id
+      state
+    }
+  }
+`;
+
