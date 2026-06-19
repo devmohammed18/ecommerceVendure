@@ -349,7 +349,6 @@
 'use client'
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { useCartStore } from '../store/cartstore';
 import { client } from '../lib/apollo/client';
 import { 
@@ -357,7 +356,7 @@ import {
   ATTACHER_ADRESS, 
   CREATE_CUSTOMER, 
   SET_SHIPPING_METHOD,
-  SET_BILLING_ADDRESS,
+ 
   LOGOUT,
   TRANSITION_ORDER,
 } from '../lib/graphql/mutation/order';
@@ -415,7 +414,7 @@ const COUNTRIES = [
 
 const CheckoutPage = () => {
   const { items, clearCart, totalsWithTax } = useCartStore();
-  const router = useRouter();
+
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
