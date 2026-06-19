@@ -484,17 +484,18 @@ const CheckoutPage = () => {
       // 1. Ajouter les items → crée l'order dans Vendure
       for (const item of items) {
         if (!item.variant?.id) continue;
-        await client.mutate({
+      const orderr=  await client.mutate({
           mutation: ADD_ITEM_ORDER,
           variables: {
             productVariantId: item.variant.id,
             quantity: item.quantity,
           },
         });
+        console.log('orderrr===================>',orderr)
       }
 
       // 2. Attacher l'adresse de livraison
-      await client.mutate({
+     const addresss= await client.mutate({
         mutation: ATTACHER_ADRESS,
         variables: {
           input: {
@@ -515,6 +516,7 @@ const CheckoutPage = () => {
 
       const methods = data?.eligibleShippingMethods || [];
       setShippingMethods(methods);
+      console.log('addresss===============>',addresss)
      console.log('methode=====================>',methods)
      console.log('selectedShippingId=====>',selectedShippingId) 
 
