@@ -10,4 +10,5 @@ function OrderConfirmation() {
   )
 }
 
+export const dynamic='force-dynamic'
 export default OrderConfirmation

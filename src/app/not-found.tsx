@@ -6,5 +6,5 @@ function NotFound() {
         <h2><span className='text-xl'>404|</span> Page Not Found</h2></div>
   )
 }
-
+export const dynamic='force-dynamic'
 export default NotFound
