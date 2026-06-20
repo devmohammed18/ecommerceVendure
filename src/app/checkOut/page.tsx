@@ -656,7 +656,7 @@ const CheckoutPage = () => {
 
       // connect avec stripe
       try{
-          const res=await fetch('api/checkout',{
+          const res=await fetch('/api/checkout',{
           
             method:'POST',
             headers:{'Content-Type': 'application/json'},
