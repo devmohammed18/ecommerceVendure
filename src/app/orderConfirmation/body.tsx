@@ -35,7 +35,7 @@ const verfyAndPay=async()=>{
 
       try{
 
-      const res=await fetch(`api/verfyAndPay?session_id=${session_id}`)
+      const res=await fetch(`/api/verfyAndPay?session_id=${session_id}`)
       const data:DATA_VERFY_STRIPE=await res.json();
 
       if(!data.paid){
