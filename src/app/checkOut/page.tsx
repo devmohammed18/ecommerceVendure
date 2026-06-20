@@ -438,15 +438,15 @@ const CheckoutPage = () => {
   const totalWithShipping = subtotal + shippingPrice;
   console.log('items======>',items)
   console.log('selectdShopinng',selectedShippingId)
-  const itemsStripe:ITEMS[]=items.map(item=>{
-       return {
-        productName:item.variant?.name,
-        productPriceTax:item.variant?.priceWithTax ,
-        quantity:item.quantity}
+  // const itemsStripe:ITEMS[]=items.map(item=>{
+  //      return {
+  //       productName:item.variant?.name,
+  //       productPriceTax:item.variant?.priceWithTax ,
+  //       quantity:item.quantity}
 
-      })
-    console.log("productStripe=====>",itemsStripe)
-    console.log('order==========>',`ORDER-${Date.now()}`)
+  //     })
+  //   console.log("productStripe=====>",itemsStripe)
+  //   console.log('order==========>',`ORDER-${Date.now()}`)
   // ─── Handlers ────────────────────────────────────────────
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -612,6 +612,7 @@ const CheckoutPage = () => {
       // } catch (billingErr) {
       //   console.warn('Adresse de facturation non définie:', billingErr);
       // }
+
       // ✅ Étape 4 — Vérifier état avant transition
     const {data:activeOrder}=await client.query(
       {query:GET_ACTIVE_ORDER,fetchPolicy:"network-only"})
@@ -655,7 +656,7 @@ const CheckoutPage = () => {
 
       // connect avec stripe
       try{
-          const res=await fetch('/api/checkout',{
+          const res=await fetch('api/checkout',{
           
             method:'POST',
             headers:{'Content-Type': 'application/json'},
