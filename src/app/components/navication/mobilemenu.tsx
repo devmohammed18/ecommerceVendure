@@ -18,7 +18,7 @@ export default function MobileMenu() {
         <nav className="md:hidden bg-white border-t border-gray-200">
           <Link href="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Accueil</Link>
           <Category />
-          <Link href="/cart" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Panier</Link>
+          {/* <Link href="/cart" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Panier</Link> */}
           <Link href="/account" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Mon Compte</Link>
         </nav>
       )}

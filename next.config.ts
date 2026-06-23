@@ -8,27 +8,28 @@ const nextConfig: NextConfig = {
 images: {
     // Domaines autorisés pour les images
     remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '10000',
-        pathname: '/assets/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'localhost',
-        port: '10000',
-        pathname: '/assets/**',
-      },
+      // {
+      //   protocol: 'http',
+      //   hostname: 'localhost',
+      //   port: '10000',
+      //   pathname: '/assets/**',
+      // },
+      // {
+      //   protocol: 'https',
+      //   hostname: 'localhost',
+      //   port: '10000',
+      //   pathname: '/assets/**',
+      // },
 
-       { protocol: 'https',
-        hostname: 'images.unsplash.com'},
-      // Ajoutez votre domaine de production ici
-      {
-        protocol: 'https',
-        hostname: 'backendvendureecommerce.onrender.com',
-        pathname: '/assets/**',
-      },
+      //  { protocol: 'https',
+      //   hostname: 'images.unsplash.com'},
+      // // Ajoutez votre domaine de production ici
+      // {
+      //   protocol: 'https',
+      //   hostname: 'backendvendureecommerce.onrender.com',
+      //   pathname: '/assets/**',
+      // },
+
        {
          protocol: 'https',
          hostname: 'res.cloudinary.com', // ✅ ajoute ceci

@@ -85,6 +85,61 @@ query GetProductDetails($id:ID!)
 
 }
 `
+
+
+
+//requepere les produits de sous categorie
+export const GET_PRODUCT_BY_SUBCATEGORY=gql`
+query GetProductsByCollection($collectionId:ID){
+  collection(id:$collectionId){
+    name
+    productVariants{
+      items{
+        product{
+          id
+          name
+          slug
+          description
+          featuredAsset{
+            id
+            preview
+          }
+          
+          variants{
+            price
+            
+          }
+          
+        }
+      }
+    }
+  }
+}
+`
+
+
+
+   const GET_PRODUCT_BY_SUBCATEGORY1=gql`
+       query GetProductsCollection($collectionId: ID!) {
+    search(input: { collectionId: $collectionId }) {
+      items {
+        productId
+        productName
+        slug
+        description
+        productAsset {
+          preview
+        }
+      }
+    }
+  }
+     `
+
+
+
+
+
+
 export const GET_PRODUCT_DETAILS1=gql`
  query GetProductDetails($id: ID!) {
     product(id: $id) {
@@ -112,6 +167,10 @@ export const GET_PRODUCT_DETAILS1=gql`
         mimeType
       }
       
+
+
+      
+
       # 🔥 GROUPES D'OPTIONS AU NIVEAU PRODUIT
       # Ces groupes définissent quelles options sont disponibles
       optionGroups {

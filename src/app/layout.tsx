@@ -7,6 +7,7 @@ import { Geist, Geist_Mono } from "next/font/google";
  import { ApolloWrapper } from "./lib/apollo/client";
 
 import NavBar from "./components/navication/navbar";
+import Footer from "./footer/page";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
        <ApolloWrapper>
         <NavBar />
         {children}
+        <Footer />
         </ApolloWrapper> 
       </body>
     </html>

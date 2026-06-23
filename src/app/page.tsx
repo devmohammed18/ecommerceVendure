@@ -1,6 +1,8 @@
+import ShowProduct from "./components/product/showProduct";
 
 
-import ShowProduct from "./components/showProduct";
+
+
 
 
 
@@ -8,7 +10,8 @@ export default function Home() {
   return (
    <div>
 
-    <ShowProduct />
+   
+   <ShowProduct />
    
    </div>
   );
