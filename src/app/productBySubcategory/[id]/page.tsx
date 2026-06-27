@@ -119,42 +119,39 @@ console.log('prace========>',price)
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
             {products.map((product,index:number) => (
               
-            <Link
+              <Link
+                href={`/productDetails/${product.id}`}
+                  key={index}
+                  className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-200 p-4 flex flex-col items-center text-center"
+                >
+                <div className="w-64 mx-auto" >
+                    <div className="w-64 h-60 relative mb-4">
+                      {product.featuredAsset.preview ? (
+                        <Image
+                          src={product.featuredAsset.preview}
+                          alt={product.name}
+                          fill
+                          className="object-cover rounded"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+                          Aucune image
+                        </div>
+                      )}
+                    </div>
 
-              href={`/productDetails/${product.id}`}
-                key={index}
-                className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-200 p-4 flex flex-col items-center text-center"
-              >
-              <div className="w-64 mx-auto" >
-                  <div className="w-64 h-60 relative mb-4">
-                    {product.featuredAsset.preview ? (
-                      <Image
-                        src={product.featuredAsset.preview}
-                        alt={product.name}
-                        fill
-                        className="object-cover rounded"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
-                        Aucune image
-                      </div>
-                    )}
-                  </div>
-
-                {/* name Product */}
-                 <h2 className="text-sm text-left font-semibold text-gray-800">
-                  {product.name}
-                 </h2>
-                {/* price Product */}
-
-                  <h2 className="text-sm text-left text-red-800" >
-                    {productsWithPrice[index].min==productsWithPrice[index].max? `${productsWithPrice[index].min} $` :`${productsWithPrice[index].min} $ - ${productsWithPrice[index].max} $`}
+                  {/* name Product */}
+                  <h2 className="text-sm text-left font-semibold text-gray-800">
+                    {product.name}
                   </h2>
+                  {/* price Product */}
 
-              </div>    
-                {/* <p className="text-sm text-gray-600 mt-1 line-clamp-2">
-                  {product.description || "Pas de description."}
-                </p> */}
+                    <h2 className="text-sm text-left text-red-800" >
+                      {productsWithPrice[index].min==productsWithPrice[index].max? `${productsWithPrice[index].min} $` :`${productsWithPrice[index].min} $ - ${productsWithPrice[index].max} $`}
+                    </h2>
+
+                </div>    
+               
               </Link>
             ))}
           </div>

@@ -8,6 +8,11 @@ import ProductCart from "./productCart";
 
 
 export default async function ShowProduct() {
+
+
+
+
+
   const { data } = await serverClient.query<ProductsData>({
     query: GET_PRODUCT,
   });
@@ -20,6 +25,10 @@ export default async function ShowProduct() {
   const variants=products.map((product=>(product.variants.map(variant=>variant.price))))
   console.log("variants........................",variants)
   console.log("min price:",Math.min(...variants[0]))
+
+
+
+
   return (
     <section className=" bg-gray-50">
 

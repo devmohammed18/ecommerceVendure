@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  
+      
   // eslint: {
   //   ignoreDuringBuilds: true,
   // },
@@ -36,8 +38,7 @@ images: {
         }
     ],
     
-    // Alternative plus permissive pour le développement (à éviter en production)
-    // domains: ['localhost'],
+  
     
     // Formats d'images supportés
     formats: ['image/webp', 'image/avif'],
@@ -47,10 +48,7 @@ images: {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   
-  // Autres configurations Next.js si nécessaire
-  experimental: {
-    // Fonctionnalités expérimentales si vous en utilisez
-  }
+
 
 
 };

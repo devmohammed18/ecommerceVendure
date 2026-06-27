@@ -10,9 +10,9 @@ export default async function Category() {
   });
 
 //affiche just les categorie parent ( Racine )
-const rootCategory = data?.collections.items.filter(
+const rootCategories = data?.collections.items.filter(
     (cat) => cat.parent?.name === '__root_collection__'
   );
 
-  return <SubCategory rootCategory={rootCategory} />;
+  return <SubCategory rootCategory={rootCategories} />;
 }
