@@ -2,18 +2,17 @@
 
 import React, { useState,useEffect, useRef } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { Category, CollectionResponse } from '@/app/lib/type/vendure';
+import { Category, CollectionResponse, PropsSubCategory } from '@/app/lib/type/vendure';
 import { GET_CATEGORIE_CHILDREN } from '@/app/lib/graphql/query/collections';
 
 import CategoryDropDown from './categoryDropDown';
+import { ChevronDown } from 'lucide-react';
 
 
 
-interface Props {
-  rootCategory: Category[];
-}
 
-export default function SubCategory({ rootCategory }: Props) {
+
+export default function SubCategory({ rootCategory ,isMobile ,setMobileOpen}:PropsSubCategory) {
 
   const [openCategoryId, setOpenCategoryId] = useState<string | null>(null);
 
@@ -39,7 +38,7 @@ useEffect(()=>{
 document.addEventListener('mousedown',handleClikOutSide)
 //garantit que le détecteur de clic extérieur est supprimé lorsque le composant disparaît
 return ()=>{
-  document.addEventListener('mousedown',handleClikOutSide)
+  document.removeEventListener('mousedown',handleClikOutSide)
 }
 },[])
 
@@ -87,26 +86,42 @@ const {data}=await fetchChildren({variables:{id:cotegoryId}})
   };
 
   return (
+     
     <div className=" relative" ref={menuRef}>
-      <div className="lg:hidden  flex flex-col items-center space-x-4">
+            {/* isMobile===true : mode Mobile 
+            isMobile===false: mode descktop*/}
+      <div className={ 
+        `${isMobile?'flex flex-col justify-center' :'flex flex-row items-center space-x-4'}  `}
+       >
         {rootCategory.map((cat) => (
-          <div key={cat.id} className="relative">
-            <ul
-             onClick={() => handleToggle(cat)}
+          <div key={cat.id} className="relative  ">
              
-              className="text-gray-700 p-2 text-gl font-bold hover:bg-gray-300 hover:cursor-pointer hover:transition-all hover:duration-300"
-            >
-              {cat.name}
-            </ul>
+              <button
+                  onClick={() => handleToggle(cat)}
+                  
+                        className={`
+                        h-full  border-solid  border-gray-100   
+                        flex items-end justify-between   
+                        text-gray-700  font-bold
+                        hover:bg-gray-300 transition-all duration-150 cursor-pointer
+                          ${isMobile?"border-b-2 w-full mt-1.5 px-4 py-3 text-base ":"border-2 rounded-md px-3 py-2 text-gl gap "}`}>
+                         {cat.name}
+                    {/* <ChevronUp /> */}
+                     <ChevronDown 
+                   size={16}
+                  className={` hover:font-black  transition-transform duration-200 ${openCategoryId===cat.id?"rotate-180":""}`} />
+              </button>
+               
+               
+                   
+              {/* Dropdown sous-catégories */}
 
-            {/* Dropdown sous-catégories */}
-
-            {
-              openCategoryId===cat.id && subCategories[cat.id]?.children?.length>0 && 
-              ( 
-                <CategoryDropDown setOpenCategoryId={setOpenCategoryId} cat={cat} subCategories={subCategories} />
-              ) 
-            }
+              {
+                openCategoryId===cat.id && subCategories[cat.id]?.children?.length>0 && 
+                ( 
+                  <CategoryDropDown setOpenCategoryId={setOpenCategoryId} 
+                             cat={cat} subCategories={subCategories} isMobile={isMobile} setMobileOpen={setMobileOpen}  /> ) 
+              }
            
           </div>
         ))}

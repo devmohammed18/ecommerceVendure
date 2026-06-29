@@ -1,4 +1,24 @@
 // type de categories /component menu-bar
+// tyepe component subcategory.tsx
+export interface PropsSubCategory {
+  rootCategory: Category[];
+  isMobile:boolean
+  setMobileOpen?:React.Dispatch<React.SetStateAction<boolean>>
+ // onClos:()=>void
+
+}
+//type Component categoryDropDown.tsx
+export interface PropsCategryDropDown{
+  setOpenCategoryId:React.Dispatch<React.SetStateAction<string|null>>;
+  cat:Category;
+  subCategories:Record<string, Category>;
+  isMobile:boolean;
+  setMobileOpen?:React.Dispatch<React.SetStateAction<boolean>>;
+
+}
+
+
+
 export interface CollectionsResponse{
 
     collections:{
