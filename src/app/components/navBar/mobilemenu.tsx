@@ -70,7 +70,7 @@ export default function MobileMenu({rootCategory}:{rootCategory:Category[]}) {
                       Accueil
                   </Link>
 
-                  <SubCategory isMobile={true} setMobileOpen={setMobileOpen} mobileOpen={mobileOpen} rootCategory={rootCategory} />
+                  <SubCategory isMobile={true} setMobileOpen={setMobileOpen} rootCategory={rootCategory} />
              </div> 
         </nav>
         
