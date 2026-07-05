@@ -65,6 +65,7 @@ export default function MobileMenu({rootCategory}:{rootCategory:Category[]}) {
              <div className=''>
 
                   <Link href="/" 
+                      onClick={()=>setMobileOpen(perv=>!perv)}
                       className="border-b-2 border-gray-100 block px-4 py-3 text-gray-700 font-bold
                      hover:bg-gray-100">
                       Accueil

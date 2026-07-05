@@ -104,7 +104,7 @@ const {data}=await fetchChildren({variables:{id:cotegoryId}})
                         flex items-end justify-between   
                         text-gray-700  font-bold
                         hover:bg-gray-300 transition-all duration-150 cursor-pointer
-                          ${isMobile?"border-b-2 w-full mt-1.5 px-4 py-3 text-base ":"border-2 rounded-md px-3 py-2 text-gl gap "}`}>
+                          ${isMobile?"border-b-2 w-full mt-1.5 px-4 py-3 text-base ":"border-2 rounded-md px-3 py-2 text-md  "}`}>
                          {cat.name}
                     {/* <ChevronUp /> */}
                      <ChevronDown 

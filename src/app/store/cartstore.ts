@@ -40,18 +40,11 @@ export const useCartStore=create<CartStore>((set,get)=>({
 
  //Delete Product
 
-        deleteItem:(idItem)=>{ 
-     
-    set(state=>( {items:state.items.filter(el=>el.variant?.id!=idItem)})) 
-
-    
-
-  
-        
-     },   
+    deleteItem:(idItem)=>{   
+     set(state=>( {items:state.items.filter(el=>el.variant?.id!=idItem)}))  },   
    //incriment    
     incriment:(idItem)=>{
-   set(state=>({items:state.items.map(el=>(
+     set(state=>({items:state.items.map(el=>(
         el.variant?.id===idItem
         ?{...el,quantity:el.quantity+1}
     

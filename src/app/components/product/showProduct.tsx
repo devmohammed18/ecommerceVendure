@@ -11,8 +11,16 @@ export default async function ShowProduct() {
 
 
 
+// const delay = (ms: number) =>
+//   new Promise((resolve) => {
+//     const timer = setTimeout(resolve, ms);
 
+//     // on retourne le timer si besoin d'annulation
+//     return () => clearTimeout(timer);
+//   });
+// delay(900)
 
+//await new Promise(resolve=>setTimeout(()=>resolve,200)) 
   const { data } = await serverClient.query<ProductsData>({
     query: GET_PRODUCT,
   });

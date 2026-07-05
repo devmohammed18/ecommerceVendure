@@ -8,6 +8,7 @@ function ProductCart({product}:{product:Product} ) {
   return (
 
   <Link
+      // href={`/productDetails/${product.id}?name=${product?.name}`}
       href={`/productDetails/${product.id}`}
       className=" w-full  p-4   hover:brightness-90 transition-all duration-300 "
     >
@@ -43,7 +44,7 @@ function ProductCart({product}:{product:Product} ) {
       </div>
 
       
-    </Link>
+  </Link>
 
     // <div className='w-full flex flex-col items-center justify-center' >
     //       <div className="w-full h-40 relative mb-4">

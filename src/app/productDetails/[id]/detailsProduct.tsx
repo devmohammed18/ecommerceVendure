@@ -99,8 +99,8 @@ console.log('',selectSize)
        
         {/*************         Image Praicipale     **************************/}
  {/* relative w-full md:w-2/5 h-96 md:h-[500px] rounded-xl overflow-hidden border border-gray-200 bg-white'       */}
-        <div className='relative  mt-16 h-auto w-2/5 box-content border border-solid bg-gray-100' >
-
+         <div className='relative  mt-16 h-auto w-2/5 box-content border border-solid bg-gray-100' >
+        
         <Image 
              src={CurrentImage}
              alt={product.name}
@@ -124,10 +124,10 @@ console.log('',selectSize)
         {/* nom */}
          <h3 className='text-3xl font-bold text-gray-800 '>{product.name}</h3>
            {selectSize?<span className='text-2xl font-semibold text-red-500'>
-                           {`$ ${selectSize?.price/100}`}
+                           {`$ ${((selectSize?.price)/100).toFixed(2)}`}
                        </span>
                        : <span className='text-2xl font-semibold text-red-500'>
-                             {`$ ${product.variants[0].price/100}`}
+                             {`$ ${((product.variants[0].price)/100).toFixed(2)}`}
                         </span>
                       
                       }
@@ -223,7 +223,7 @@ console.log('',selectSize)
 
 
              </div>
-         {/******* button de Panier **********/}
+         {/******* button Add de Panier **********/}
            
            {/*  'bg-gray-300 text-gray-400 cursor-not-allowed' */}
             
@@ -340,7 +340,7 @@ console.log('',selectSize)
           </div> */}
 
          
-         </div>
+        </div>
 
     </div>
 

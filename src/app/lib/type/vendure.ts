@@ -60,7 +60,8 @@ export interface ProductOption{
     id:string
           code:string
           name:string
-          groupId:string     
+          groupId:string  
+          stockLevel:string   
           group:{      
             id:string
             name:string
