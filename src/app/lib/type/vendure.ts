@@ -185,3 +185,4 @@ export interface ProductsData {
     items: Product[]
   }
 }
+

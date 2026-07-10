@@ -4,7 +4,7 @@ import { useCartStore } from '@/app/store/cartstore';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 
- const DetailsProduct = ({product}:{product:Product}) => {
+ const DetailsProductt = ({product}:{product:Product}) => {
 
     // 1. Trier les groupes — color en premier
     const {addItem}=useCartStore();
@@ -348,4 +348,4 @@ console.log('',selectSize)
 
   )
 }
-export default DetailsProduct
+export default DetailsProductt

@@ -5,10 +5,13 @@ import Image from 'next/image'
 import { getLevel1Option } from './features/getLevel1Option'
 import { getLevel2Options } from './features/getLevel2Options'
 import { getSelectedVariants } from './features/getSelectedVarians'
-import { useStore } from 'zustand'
-import { useCartStore } from '@/app/store/cartstore'
 
-function DetaisProducttt({product}:{product :Product}) {
+import { useCartStore } from '@/app/store/cartstore'
+import ButtonsLevel1 from './component/buttonLevel1'
+import ButtonsLevel2 from './component/ButtonsLevel2'
+import StatusStock from './component/statusStock'
+
+function DetailsProduct({product}:{product :Product}) {
 
 const {addItem}=useCartStore()
 const items=useCartStore(state=>state.items)
@@ -28,7 +31,7 @@ const getInitiaLevel2Options=():string[]=>{
     return level2Options
 }
 //function Button niveau 1
-const hendelLevel1Change=(v:string,index:number)=>{
+const handelLevel1Change=(v:string,index:number)=>{
 
    const newValuesNiveau2= option.filter(op=>op[0]===level1Options[index]).map(o=>o[1])
     //recuper les valeur de niveau 2
@@ -126,29 +129,16 @@ console.log('selectOptionsLevel2=====>',selectOptionsLevel2)
          
             {/* option:1  niveax 1*/}
         {product.optionGroups.length>0 &&
-        <div className=' w-full flex flex-col items-center gap-3 '>
+         <div className=' w-full flex flex-col items-center gap-3 '>
 
             <div  className={`w-full ml-5 `}>
                 {/* optionGroupe */}
                 <h1 className='text-md font-bold '> {product.optionGroups[0]?.name} </h1>
-                <div className='w-full flex flex-wrap items-center justify-start gap-2 mt-1  space-x-2.5 '>
-                {/* option */}
-                    {level1Options.map((v,index)=>(
-                    <button  key={index} 
-                                onClick={()=>{hendelLevel1Change(v,index);}}
-                                className={`w-20 h-10 border border-solid rounded-lg
-                                           border-gray-500 text-sm p-2 hover:cursor-pointer hover:border-red-500 hover:border-2 transition-colors dureation-300
-                                           ${level1Options[selectedLevel1Index]===v?"bg-red-600 ":""}`}>
-                            {v}
-                    </button>)) }
-                </div>
-            
-            
-            </div>
-
-        
-
-        </div>}
+                 <ButtonsLevel1 product={product} level1Options={level1Options} 
+                       handelLevel1Change={handelLevel1Change} 
+                      selectedLevel1Index={selectedLevel1Index} />
+              </div>
+          </div>}
 
         {/* option:2 niveau 2 */}
 
@@ -160,7 +150,7 @@ console.log('selectOptionsLevel2=====>',selectOptionsLevel2)
             
                 <h1 className='text-md font-bold '> {product.optionGroups[1].name}</h1>
             
-                <div className='w-full flex flex-wrap items-center justify-start gap-2 mt-1  space-x-2.5 '>
+                {/* <div className='w-full flex flex-wrap items-center justify-start gap-2 mt-1  space-x-2.5 '>
                     {selectOptionsLevel2.map((v,index1)=>{
                   const variant=getSelectedVariants(product,selectedLevel1,selectOptionsLevel2,index1)
                  console.log("selectVariante dans le button :",variant)
@@ -197,30 +187,25 @@ console.log('selectOptionsLevel2=====>',selectOptionsLevel2)
                     
                     
                     }
-                 </div>
-             
+                 </div> */}
+                <ButtonsLevel2 product={product} selectOptionsLevel2={selectOptionsLevel2} 
+                        selectedLevel1={selectedLevel1} handelLevel2Change={handelLevel2Change} 
+                         getSelectedVariants={getSelectedVariants} selectedLevel2Index={selectedLevel2Index}/>
             
             </div>
 
         
 
         
-        </div>}
- 
-          {/* status the stock */}
-          <div className='w-full flex items-center justify-start gap-2' >
-            <h1 className='text-md mt-4 font-bold'>status stock:</h1>
-             {<p className= {`text-md font-bold mt-4 
-                             ${isAvailableStock?'text-green-500'
-                             :isLowStock?"text-yellow-500"
-                             :isOutOfStock?'text-red-500':'text-gray-400' }    `}>
-               
-                
-                {stateStock ?? "UNKNOWN"}
+         </div>  
+         }
+        
 
-               </p> }
-          </div>
+          {/* status the stock */}
+          <StatusStock isAvailableStock={isAvailableStock} isLowStock={isLowStock}
+                       isOutOfStock={isOutOfStock} stateStock={stateStock} />
           {/* button Add */}
+        
          <div className='w-4/5'>
             <button 
                 
@@ -234,11 +219,11 @@ console.log('selectOptionsLevel2=====>',selectOptionsLevel2)
                      productImage:imageUrlVariant??imageUrl,
                      productName:product.name})}}
                   
-                  className={`w-full h-12 border border-gray-200 
+                  className={`w-full h-12 border border-gray-200 bg-amber-100
                               rounded-lg 
                               transition-colors duration-300 
                               ${isOutOfStock?"bg-gray-100 cursor-not-allowed ":
-                                 "hover:bg-amber-100 "}`}>
+                                 "hover:bg-amber-400 "}`}>
                   Add Cart 
             </button>
          </div>
@@ -251,4 +236,4 @@ console.log('selectOptionsLevel2=====>',selectOptionsLevel2)
   )
 }
 
-export default DetaisProducttt
+export default DetailsProduct

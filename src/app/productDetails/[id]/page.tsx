@@ -31,9 +31,10 @@
 import { serverClient } from '@/app/lib/apollo/server-client'
 import {  GET_PRODUCT_DETAILS1 } from '@/app/lib/graphql/query/collections'
 import React from 'react'
-import DetaisProducttt from './detaisProducttt'
-import DetailsProduct from './detailsProduct'
-import { Product, ProductDetailsResponse } from '@/app/lib/type/vendure'
+
+
+import {  ProductDetailsResponse } from '@/app/lib/type/vendure'
+import DetailsProduct from './detaisProduct'
 
 // async function page({params,searchParams}:
 //   {params:Promise<{id:string}>,searchParams:Promise<{name:string}>} ) {
@@ -45,13 +46,10 @@ import { Product, ProductDetailsResponse } from '@/app/lib/type/vendure'
   //const {name}=await searchParams
  const {data}=await serverClient.query<ProductDetailsResponse>({query:GET_PRODUCT_DETAILS1,variables:{id:id}})
  const product=data.product
-  console.log("data=======================>",data.product)
-
-  console.log("iid============================>",id)
- // console.log("nom============================>",name)
+ 
   return (
     <div>
-      <DetaisProducttt  product={product}  />
+      <DetailsProduct  product={product}  />
       {/* <DetailsProduct product={product} /> */}
     </div>
   )

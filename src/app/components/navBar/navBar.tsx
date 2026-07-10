@@ -4,12 +4,13 @@ import MobileMenu from './mobilemenu'; // Client Component
 
 import CartItems from '../cart/cartItems';
 
-import BarSearch from './barSearch';
+
 import MyAccount from './myAccount';
 import { serverClient } from '@/app/lib/apollo/server-client';
 import { GET_COLLECTIONS } from '@/app/lib/graphql/query/collections';
 import { CollectionsResponse } from '@/app/lib/type/vendure';
 import SubCategory from './category/subcategory';
+import BarSearch from './search/barSearch/barSearch';
 
 
 
@@ -33,9 +34,9 @@ const rootCategories = data?.collections.items.filter(
                      
                   </Link>
                   <Link href="/" className={`border-2 border-solid lg:rounded-md  lg:mr-3 border-gray-100  lg:px-3 lg:py-2 text-gray-700 p-2 text-gl font-bold hover:bg-gray-300 hover:cursor-pointer hover:transition-all hover:duration-300 `}>Accueil</Link>
-                  {/* <Link href='/test'>Test</Link>
-                  <Link href='/test1'>Test1</Link> */}
-
+                  {/* <Link href='/test'>Test</Link> */}
+                  {/* <Link href='/test1'>Test1</Link> */}
+                   {/* <Link href='/test4'>Test4</Link> */}
                   {/* isMobile:false pour Desck Lg */}
                   {/* <Link href={`/test3`}>Test3</Link> */}
                   <SubCategory  isMobile={false} rootCategory={rootCategories}  />
@@ -51,7 +52,8 @@ const rootCategories = data?.collections.items.filter(
                               <span>|</span>
                     </Link>
                      {/* bar Search and Cart */}
-                    <div className='w-56 sm:w-80  lg:w-80 lg:gap-6  flex items-center justify-between  '>
+                    <div className='w-44 sm:w-48  lg:w-48 lg:gap-6  flex items-center justify-between  
+                                    border-0 border-green-900'>
                         <BarSearch />           
                         <CartItems />
                     </div>  
